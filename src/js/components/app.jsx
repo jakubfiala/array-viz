@@ -3,6 +3,8 @@ import Header from './header';
 import Form from './form';
 import Viz from './viz';
 import vnormalize from './../utils/vnormalize';
+import vdeneg from './../utils/vdeneg';
+import vadd from './../utils/vadd';
 
 export default class App extends React.Component {
 	constructor() {
@@ -19,7 +21,7 @@ export default class App extends React.Component {
 				}
 			}
 			catch(err) {
-				var parsed = e.target.value.replace(/\n|_/gi, '');
+				var parsed = e.target.value.replace(/\n|[^0-9,\-\[\]_]+/gi, '');
 
 				parsed = parsed.split(',');
 
@@ -29,7 +31,7 @@ export default class App extends React.Component {
 			}
 
 			this.setState({
-				data: vnormalize(parsed)
+				data: vnormalize(vadd(vdeneg(parsed),0.1))
 			});
 		};
 	}

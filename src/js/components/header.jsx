@@ -9,7 +9,7 @@ export default class Header extends React.Component {
 				</h1>
 				<h3>A simple <strong>numeric</strong> array visualisation tool.</h3>
 				<p>
-					built by <a href="/">fiala</a> using <a href="http://d3js.org/">d3</a> and <a href="http://facebook.github.io/react/">react.</a>
+					built by <a target="_blank" href="/">fiala</a> using <a target="_blank" href="http://d3js.org/">d3</a> and <a target="_blank" href="http://facebook.github.io/react/">react.</a>
 				</p>
 			</header>
 		);

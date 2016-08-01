@@ -2,6 +2,29 @@ var path = require("path");
 var webpack = require('webpack');
 var webpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
 
+var plugins = [
+	new webpack.DefinePlugin({
+		'process.env':{
+			'NODE_ENV': JSON.stringify(process.env['NODE_ENV'])
+		}
+	})
+]
+
+if (process.env['NODE_ENV'] == "production") {
+	plugins.push(new webpack.optimize.UglifyJsPlugin({
+		cacheFolder: path.resolve(__dirname, './cached_uglify/'),
+		debug: true,
+		minimize: true,
+		sourceMap: false,
+		output: {
+			comments: false
+		},
+		compress: {
+			warnings: true
+		}
+	}))
+}
+
 module.exports = {
 	context: __dirname,
 	entry: {
@@ -34,23 +57,5 @@ module.exports = {
 		modulesDirectories: ['node_modules'],
 		extensions: ['', '.js', '.jsx']
 	},
-	plugins: [
-		new webpack.DefinePlugin({
-			'process.env':{
-				'NODE_ENV': JSON.stringify(process.env['NODE_ENV'])
-			}
-		}),
-		new webpack.optimize.UglifyJsPlugin({
-			cacheFolder: path.resolve(__dirname, './cached_uglify/'),
-			debug: true,
-			minimize: true,
-			sourceMap: false,
-			output: {
-				comments: false
-			},
-			compress: {
-				warnings: true
-			}
-		})
-	]
+	plugins: plugins
 };
