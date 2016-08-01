@@ -1,0 +1,60 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+body #app {
+  overflow-x: hidden;
+}
+body header {
+  margin-bottom: 3em;
+}
+body header h1 {
+  font-size: 4em;
+  margin-bottom: 0;
+}
+body header h1 > strong {
+  color: #7d7d7d;
+}
+body header h3 {
+  margin-top: 0;
+  color: #7d7d7d;
+}
+body header h3 > strong {
+  color: black;
+}
+body header p {
+  color: black;
+  font-weight: lighter;
+}
+body header p a,
+body header p a:visited,
+body header p a:active {
+  color: black;
+  transition: color 0.15s;
+}
+body header p a:hover {
+  color: #7d7d7d;
+}
+body textarea {
+  border-style: dashed;
+  resize: none;
+  width: 80vw;
+  max-width: 800px;
+  font-size: 1.5em;
+  padding: 1em;
+  margin: 0;
+  outline: 0;
+  height: calc(100vh - 310px - 11.8em);
+  min-height: 3em;
+}
+body .viz-wrapper {
+  margin-top: 2em;
+  overflow-x: scroll;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+body .viz-wrapper svg rect {
+  transition: y 0.3s, height 0.3s;
+}
